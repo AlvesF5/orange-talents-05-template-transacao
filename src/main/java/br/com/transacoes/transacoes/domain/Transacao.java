@@ -3,6 +3,7 @@ package br.com.transacoes.transacoes.domain;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -23,10 +24,10 @@ public class Transacao {
 	
 	private BigDecimal valor;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Estabelecimento estabelecimento;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	private Cartao cartao;
 	
 	@JsonDeserialize(using = LocalDateTimeDeserializer.class)
